@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agenda Escolar</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .contenedor{
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1{
+            text-align: center;
+            color: #4f46e5;
+        }
+
+        .logo{
+            display: block;
+            margin: auto;
+            width: 120px;
+        }
+
+        input{
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button{
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover{
+            background: #3730a3;
+        }
+
+        h2{
+            color: #06b6d4;
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+
+        li{
+            background: #f3f4f6;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .archivada{
+            background: #dcfce7;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <img src="icono-192.png"
+         class="logo"
+         alt="Logo">
+
+    <h1>📚 Agenda Escolar</h1>
+
+    <input type="text" id="tarea" placeholder="Escribe una tarea">
+
+    <input type="datetime-local" id="fecha">
+
+    <button onclick="agregarTarea()">➕ Agregar Tarea</button>
+
+    <h2>📋 Tareas Pendientes</h2>
+    <ul id="lista"></ul>
+
+    <h2>📁 Tareas Archivadas</h2>
+    <ul id="archivadas"></ul>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+            .then(() => console.log('Service Worker registrado'))
+            .catch(error => console.log('Error:', error));
+    }
+</script>
+
+</body>
+</html>
